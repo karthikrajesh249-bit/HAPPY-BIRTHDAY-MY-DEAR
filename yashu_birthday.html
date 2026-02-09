@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Yashu ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #ff5f9e, #ff8fb1);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* HEADINGS */
+h1 { font-size: 2.4em; margin-top: 20px; }
+h2 { font-size: 1.4em; font-weight: normal; }
+h3 { font-size: 1.2em; min-height: 1.5em; }
+
+/* SLIDESHOW */
+.slideshow {
+    width: 92%;
+    max-width: 420px;
+    height: 520px;
+    margin: 25px auto;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0,0,0,0.4);
+    background: rgba(255,255,255,0.1);
+}
+.slideshow img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* CARD */
+.card {
+    background: rgba(255,255,255,0.2);
+    padding: 28px;
+    margin: 25px auto;
+    width: 92%;
+    max-width: 650px;
+    border-radius: 28px;
+    box-shadow: 0 0 35px rgba(0,0,0,0.4);
+}
+
+p {
+    font-size: 20px;
+    line-height: 1.9;
+}
+
+/* BUTTONS */
+button {
+    margin-top: 20px;
+    padding: 16px 40px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff3f7f;
+    cursor: pointer;
+}
+
+/* PLAY MUSIC BUTTON */
+#playBtn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff2e63;
+    color: white;
+    z-index: 9999;
+}
+
+/* HIDDEN */
+.hidden { display: none; }
+
+/* HEARTS */
+.heart {
+    position: fixed;
+    top: -10px;
+    font-size: 22px;
+    color: #ffb3c6;
+    animation: fall linear infinite;
+}
+@keyframes fall {
+    to { transform: translateY(110vh); }
+}
+
+/* MOBILE EXTRA */
+@media (max-width: 600px) {
+    p { font-size: 22px; }
+    h1 { font-size: 2.2em; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC (NO AUTOPLAY) -->
+<audio id="bgm" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<button id="playBtn" onclick="playMusic()">🎵 Play Music</button>
+
+<h1>🎂 Happy Birthday 🎂</h1>
+<h2>My Love, My Heart, <b>YASHU</b> ❤️</h2>
+<h3 id="typing"></h3>
+
+<!-- SLIDESHOW -->
+<div class="slideshow">
+    <img id="slide" src="photos/1.jpg">
+</div>
+
+<div class="card">
+<p>
+Yashu ❤️<br><br>
+You are not just someone I love…  
+you are the reason my heart smiles 💕<br><br>
+Every photo here holds a memory,  
+every memory holds my love for you ✨<br><br>
+On your birthday, I just want you to know —  
+you are deeply, madly, endlessly loved 💖
+</p>
+
+<button onclick="showLove()">Read My Promise 💝</button>
+
+<p id="love" class="hidden">
+My beautiful Yashu 🥹❤️<br><br>
+I promise to love you in your happiness,  
+stand by you in your sadness,  
+and hold you in every moment 🤍<br><br>
+No matter where life takes us,  
+my heart will always find its way back to you ♾️<br><br>
+You are my today,  
+my tomorrow,  
+my forever ❤️<br><br>
+— Always yours,<br>
+<b>KARTHIK</b> 💌
+</p>
+</div>
+
+<footer>
+Made with pure ❤️ by KARTHIK for YASHU
+</footer>
+
+<script>
+// MUSIC
+function playMusic() {
+    const music = document.getElementById("bgm");
+    music.play();
+    document.getElementById("playBtn").style.display = "none";
+}
+
+// SLIDESHOW (14 PHOTOS)
+let images = [];
+for (let i = 1; i <= 14; i++) {
+    images.push(`photos/${i}.jpg`);
+}
+let index = 0;
+setInterval(() => {
+    index = (index + 1) % images.length;
+    document.getElementById("slide").src = images[index];
+}, 3000);
+
+// SHOW LOVE
+function showLove() {
+    document.getElementById("love").classList.remove("hidden");
+}
+
+// HEARTS
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 8000);
+}, 300);
+
+// TYPING TEXT
+let text = "I LOVE YOU MORE EVERY DAY, YASHU ❤️";
+let i = 0;
+let typing = setInterval(() => {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+    } else {
+        clearInterval(typing);
+    }
+}, 120);
+</script>
+
+</body>
+</html>
